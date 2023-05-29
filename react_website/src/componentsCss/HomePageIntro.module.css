@@ -1,0 +1,28 @@
+.coverr {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    -webkit-background-size: cover;
+    background-position: center center;
+    z-index: -10;
+    opacity: 60%;
+    transform-origin: 50% 65%;
+    overflow: hidden;
+}
+
+
+.containerr {
+
+    -webkit-background-size: cover;
+    background-position: center center;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column-reverse;
+    z-index: 3;
+}

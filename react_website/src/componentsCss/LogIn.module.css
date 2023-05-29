@@ -1,0 +1,122 @@
+.wrong_password{
+    font-size: 1.3rem;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.coverr {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    -webkit-background-size: cover;
+    background-position: center center;
+    z-index: -10;
+    opacity: 30%;
+    transform-origin: 50% 65%;
+    overflow: hidden;
+}
+
+.containerr {
+
+    -webkit-background-size: cover;
+    background-position: center center;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column-reverse;
+    z-index: 3;
+}
+
+.centered {
+    z-index: 1;
+    font-family: 'Tiro Telugu', serif;
+    max-width: 100%;
+    width: 800px;
+    font-size: 2rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-shadow: 2px 4px 4px rgb(0 0 0 / 27%);
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    left: 50%;
+    color: #DED194;
+    transform: translate(-50%, -50%);
+
+}
+
+.text_center {
+    color: #fff;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    font-family: 'Tiro Telugu', sans-serif !important;
+    text-align: center;
+}
+
+.input_container {
+    position: relative;
+    margin-bottom: 25px;
+
+}
+
+.input_container label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 18px !important;
+    font-family: 'Tiro Telugu', sans-serif !important;
+    color: #fff;
+    pointer-event: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.input_container input {
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.input_container input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
+.input_container input:focus~label,
+.input_container input:valid~label {
+    top: -12px;
+    font-size: 12px;
+
+}
+
+.title_font {
+    font-family: 'Tiro Telugu', sans-serif !important;
+}
+
+.about_us_button {
+    justify-content: center;
+    text-align: center;
+    color: black !important;
+    background-color: #F2D17A !important;
+    border-color: #0a53be00 !important;
+    --bs-btn-padding-x: 2.5rem !important;
+}
+
+.form_style {
+    padding: 40px;
+}
+
+.about_us_button:hover {
+    background-color: white !important;
+}

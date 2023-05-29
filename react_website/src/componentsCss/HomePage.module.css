@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Telugu&display=swap');
+
+.font_link_second {
+  font-family: 'Tiro Telugu', serif;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/*intro container start*/
+
+.containerr:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: rgb(0 0 0 / 34%);
+}
+
+.title_font {
+  font-family: 'Tiro Telugu', sans-serif !important;
+}
+
+.centered {
+  width: 100%;
+  z-index: 1;
+  font-family: 'Tiro Telugu', serif;
+  max-width: 100%;
+  font-size: 2rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-shadow: 2px 4px 4px rgb(0 0 0 / 27%);
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  left: 50%;
+  color: #DED194;
+  transform: translate(-50%, -50%);
+}
+
+.bigger_title {
+  font-size: 3.4rem;
+  max-width: 80%;
+}
+
+.three {
+  width: 40%;
+  background-color: #1a1a1a71;
+  max-width: 100%;
+  align-items: flex-end;
+  z-index: 10 !important;
+}
+
+.offers_pic {
+  padding: 2%;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  max-width: 100%;
+  width: 70px;
+  height: 70px;
+}
+
+.counter_first {
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.offers_text {
+  margin: none !important;
+  font-size: 1.3rem;
+}
+
+.offers {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.counter {
+  float: left;
+  color: white;
+}
+
+.shadow {
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.212);
+}
+
+/*intro container end*/
+
+/*carousal container start*/
+
+.carousel-indicators button:not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+[aria-label] {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50%;
+  margin-left: 10px !important;
+}
+
+.carousel-caption {
+  padding-bottom: 2.65rem !important;
+  right: 0% !important;
+  width: 100% !important;
+  left: 0% !important;
+
+}
+
+/*carousal container end*/
+
+/*container buisness start*/
+
+.left {
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.right {
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.buisness {
+  font-size: 2rem;
+  text-align: left;
+  font-weight: lighter;
+  color: #F2D17A;
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+
+.buisness_capital {
+  text-align: left;
+  font-size: 1.30rem;
+  color: white;
+  font-weight: lighter;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 25px;
+}
+
+.buisness_explained {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+.grid_container {
+  transform: rotate(45deg);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.text_grid {
+  text-align: center;
+  margin-right: 10px;
+  transform: rotate(-45deg);
+}
+
+.black_item {
+  background-color: transparent !important;
+}
+
+.grey_item {
+  background-color: #272727 !important;
+}
+
+.plus_item {
+  font-size: -webkit-xxx-large;
+  background-color: #131313 !important;
+}
+
+.grid_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  background-color: #464646;
+  color: #F2D17A;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+  font-size: 30px;
+}
+
+/*container buisness end*/
+
+.why_capital {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: lighter;
+  color: #F2D17A;
+  padding-bottom: 25px;
+}
+
+.desc_why_capital {
+  width: 85%;
+  text-align: center;
+  font-size: 1.30rem;
+  color: white;
+  font-weight: lighter;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 25px;
+}
+
+.container_why_capital {
+  padding-top: 50px;
+  padding-bottom: 70px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.about_us_button {
+  justify-content: center;
+  text-align: center;
+  color: black !important;
+  background-color: #F2D17A !important;
+  border-color: #0a53be00 !important;
+  --bs-btn-padding-x: 2.5rem !important;
+}
+
+.about_us_button:hover {
+  background-color: white !important;
+}
+
+.top_offers_title {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: lighter;
+  padding-top: 10%;
+  z-index: 2;
+  position: relative;
+  top: 60px;
+}
+
+@media (max-width: 840px) {
+  .right {
+    margin-left: 0%;
+  }
+}
+
+@media (max-width: 767px) {
+  .buisness_explained {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container_why_capital {
+    padding-bottom: 0%;
+  }
+
+  .left {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-bottom: 15%;
+  }
+
+  .right {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .grid_container {
+    width: fit-content;
+
+  }
+
+  .top_offers_title {
+    padding-top: 20%;
+  }
+}
+
+@media (max-width: 575px) {
+  .centered {
+    padding-bottom: 180px;
+  }
+}
+
+@media (max-width:436px) {
+  .text_grid {
+    font-size: small;
+    padding: 5px;
+  }
+}
