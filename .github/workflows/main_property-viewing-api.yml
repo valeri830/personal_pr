@@ -50,4 +50,4 @@ jobs:
           app-name: 'property-viewing-api'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A36448AD9E9D4FB48759DFD887FF90BC }}
-          package: ./API
+          package: .
