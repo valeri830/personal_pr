@@ -1,20 +1,22 @@
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
+const odbc = require('odbc');
+const connectionString = "Driver={ODBC Driver 18 for SQL Server};Server=tcp:property-viewing-server.database.windows.net,1433;Database=propertyViewingDb;Uid=adminV;Pwd=V34024445v;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;";
+
 const dotenv = require("dotenv");
 dotenv.config();
 
 // Establishing database connection
-function mysqlPool() {
-  const pool = mysql
-    .createPool({
-      host: "localhost",
-      port: "3306",
-      user: "root",
-      password: "root",
-      database: "property_website_db",
-    })
-    .promise();
-
-  return pool;
+async function mysqlPool(sql) {
+  const connection = await odbc.connect(connectionString);
+  console.log(sql);
+  try {
+    const result = await connection.query(sql);
+    return result;
+  } catch (err) {
+    throw err;
+  } finally {
+    connection.close();
+  }
 }
 
 // Default request handler to prevent the application from crashing

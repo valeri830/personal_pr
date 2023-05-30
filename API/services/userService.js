@@ -43,7 +43,8 @@ async function registerUser(req) {
   
   // Register user
   const response = await userDb.registerUser(username, hashedPwd);
-  if (response["affectedRows"] == 1) {
+  console.log(response)
+  if (response["count"] == 1) {
     return "User created.";
   }
   else {
