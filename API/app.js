@@ -4,10 +4,9 @@ const express = require('express');
 const app = express()
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const verifyJWT = require("./middleware/verifyJWT")
 const customErrors = require("./middleware/errorHandling")
 
-const port = 3005;
+const port = process.env.PORT || 8080;
 
 // Express configuration
 

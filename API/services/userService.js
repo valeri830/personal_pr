@@ -105,7 +105,7 @@ async function updatePassword(req) {
   // Prepare the response of the request
   const updateResult = await userDb.updateByUsername(username, hashedPwd)
 
-  if (updateResult["affectedRows"] == 1) {
+  if (updateResult["count"] == 1) {
     // Prepare the response of the request
     return "User updated.";
   }
@@ -126,7 +126,7 @@ async function removeUser(req) {
 
   // Prepare the response of the request
   const result = await userDb.deleteUser(username)
-  if (result['affectedRows'] == 1) {
+  if (result['count'] == 1) {
       return "User deleted successfully."
   }
   else {

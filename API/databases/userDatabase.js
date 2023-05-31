@@ -16,26 +16,26 @@ async function findUserByUsername(username) {
   }
 
 async function findUserByRefToken(refreshToken) {
-    const sql_query = "SELECT * FROM users WHERE refresh_token = (?)";
-    const [result] = await tools.mysqlPool(sql_query, refreshToken)
+    const sql_query = `SELECT * FROM users WHERE refresh_token = '${refreshToken}'`;
+    const [result] = await tools.mysqlPool(sql_query)
     return result
 }
 
 async function updateByUsername(username, password) {
-    const sql_query = "UPDATE users SET password = ? WHERE username = (?)";
-    const [result] = await tools.mysqlPool(sql_query, [password, username])
+    const sql_query = `UPDATE users SET password = '${password}' WHERE username = '${username}'`;
+    const result = await tools.mysqlPool(sql_query)
     return result
 }
 
 async function updateRefreshTokenByUsername(username, refreshToken) {
-    const sql_query = "UPDATE users SET refresh_token = ? WHERE username = ?";
-    const [result] = await tools.mysqlPool(sql_query, [refreshToken, username])
+    const sql_query = `UPDATE users SET refresh_token = '${refreshToken}' WHERE username = '${username}'`;
+    const result = await tools.mysqlPool(sql_query)
     return result
 }
 
 async function deleteUser(username) {
-    const sql_query = "DELETE FROM users WHERE username = (?)";
-    const [result] = await tools.mysqlPool(sql_query, [username])
+    const sql_query = `DELETE FROM users WHERE username = '${username}'`;
+    const result = await tools.mysqlPool(sql_query)
     return result
   }
 

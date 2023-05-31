@@ -66,7 +66,6 @@ async function handleRefresh(req) {
 
   if (!foundUser)
     throw new customErrs.MissingUserError("User not found, token error.");
-  else foundUser = foundUser[0];
 
   // Refreshing theh access token with the refresh token
   let accessToken = jwt.verify(
@@ -97,12 +96,11 @@ async function handleLogout(req) {
   let foundUser = await userDb.findUserByRefToken(refresh_token);
 
   if (!foundUser) return "cookie";
-  else foundUser = foundUser[0];
 
   // Removes the refresh token from the user
-  const response = await userDb.updateRefreshTokenByUsername(foundUser["username"], "");
+  const response = await userDb.updateRefreshTokenByUsername(foundUser["username"], " ");
 
-  if (response['affectedRows'] == 1) {
+  if (response['count'] == 1) {
     return "cookie"
   }
   else {
