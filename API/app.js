@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const verifyJWT = require("./middleware/verifyJWT")
 const customErrors = require("./middleware/errorHandling")
 
-const port = 3005;
+const port = 8080;
 
 // Express configuration
 
