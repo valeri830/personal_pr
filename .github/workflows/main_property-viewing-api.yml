@@ -43,11 +43,6 @@ jobs:
         with:
           name: node-app
 
-      - name: Install libodbc package # Not here
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libodbc1
-
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2

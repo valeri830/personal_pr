@@ -22,8 +22,8 @@ async function handleLogin(req) {
       "Username and password are required."
     );
 
-    const userFound = (await userDb.findUserByUsername(username))[0] || null;
-
+    var userFound = await userDb.findUserByUsername(username);
+    userFound = userFound["recordset"][0]
     if (userFound == null)
       throw new customErrs.MissingUserError("No user with this username exists.");  
 
@@ -63,9 +63,10 @@ async function handleRefresh(req) {
     throw new customErrs.MissingParamError("Missing appropriate tokens.");
 
   let foundUser = await userDb.findUserByRefToken(refresh_token);
-
   if (!foundUser)
     throw new customErrs.MissingUserError("User not found, token error.");
+    else foundUser = foundUser["recordset"][0]
+
 
   // Refreshing theh access token with the refresh token
   let accessToken = jwt.verify(
@@ -94,13 +95,15 @@ async function handleLogout(req) {
     return;
 
   let foundUser = await userDb.findUserByRefToken(refresh_token);
+ 
 
   if (!foundUser) return "cookie";
+  else foundUser = foundUser["recordset"][0]
 
   // Removes the refresh token from the user
-  const response = await userDb.updateRefreshTokenByUsername(foundUser["username"], " ");
+  const response = await userDb.updateRefreshTokenByUsername(foundUser["username"], "");
 
-  if (response['count'] == 1) {
+  if (response['rowsAffected'] == 1) {
     return "cookie"
   }
   else {

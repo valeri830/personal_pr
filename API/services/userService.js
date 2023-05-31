@@ -21,9 +21,10 @@ async function registerUser(req) {
       "Username, password and passowrd repeat are required."
     );
 
-  const userFound = await userDb.findUserByUsername(username);
+  let userFound = await userDb.findUserByUsername(username);
+  userFound = userFound["recordset"][0] || null;
 
-  if (userFound.length > 0)
+  if (userFound != null)
     throw new customErrs.UserExistsError("Username already exists.");
 
   if (password != passwordRepeat) {
@@ -40,34 +41,37 @@ async function registerUser(req) {
 
   // Encrypt password
   const hashedPwd = await bcrypt.hash(password, hashRounds);
-  
+
   // Register user
   const response = await userDb.registerUser(username, hashedPwd);
-  console.log(response)
-  if (response["count"] == 1) {
+
+  if (response["rowsAffected"] == 1) {
     return "User created.";
-  }
-  else {
-    throw new customErrs.QueryError(`Failed in creating a user with username: "${username}".`)
+  } else {
+    throw new customErrs.QueryError(
+      `Failed in creating a user with username: "${username}".`
+    );
   }
 }
 
 async function getUser(req) {
   // Parameter assignment
   const username = req.body.username || null;
-  
+
   // Parameter check
   if (username == null) {
-      throw new customErrs.MissingParamError("Username is missing.");
+    throw new customErrs.MissingParamError("Username is missing.");
   }
 
   // Prepare the response of the request
-  const result = await userDb.findUserByUsername(username)
-  if (result.length == 0) {
-      throw new customErrs.IncorrectParamError(`Couldn't find any user with username: "${username}"`)
-  }
-  else {
-      return result
+  let result = await userDb.findUserByUsername(username);
+  result = result["recordset"][0] || null;
+  if (result == null) {
+    throw new customErrs.IncorrectParamError(
+      `Couldn't find any user with username: "${username}"`
+    );
+  } else {
+    return result;
   }
 }
 
@@ -81,7 +85,7 @@ async function updatePassword(req) {
   if (username == null) {
     throw new customErrs.MissingParamError("Username is missing.");
   }
-  
+
   if (newPassword != newPasswordRepeat) {
     throw new customErrs.IncorrectParamError("Passwords didn't match.");
   }
@@ -94,25 +98,28 @@ async function updatePassword(req) {
       "Password needs to contain at least one capital character, a small character and a special symbol."
     );
 
-  const result = await userDb.findUserByUsername(username)
-  if (result.length == 0) {
-      throw new customErrs.IncorrectParamError(`Couldn't find any user with username: "${username}"`)
+  let result = await userDb.findUserByUsername(username);
+  result = result["recordset"][0] || null;
+  if (result == null) {
+    throw new customErrs.IncorrectParamError(
+      `Couldn't find any user with username: "${username}"`
+    );
   }
 
   // Hash new password
   const hashedPwd = await bcrypt.hash(newPassword, hashRounds);
 
   // Prepare the response of the request
-  const updateResult = await userDb.updateByUsername(username, hashedPwd)
+  const updateResult = await userDb.updateByUsername(username, hashedPwd);
 
-  if (updateResult["count"] == 1) {
+  if (updateResult["rowsAffected"] == 1) {
     // Prepare the response of the request
     return "User updated.";
+  } else {
+    throw new customErrs.QueryError(
+      `Failed in updating password of username: "${username}"`
+    );
   }
-  else {
-    throw new customErrs.QueryError(`Failed in updating password of username: "${username}"`)
-  }
-
 }
 
 async function removeUser(req) {
@@ -121,16 +128,19 @@ async function removeUser(req) {
 
   // Parameter check
   if (username == null) {
-      throw new customErrs.MissingParamError(`User with username: "${username}" not found.`);
+    throw new customErrs.MissingParamError(
+      `User with username: "${username}" not found.`
+    );
   }
 
   // Prepare the response of the request
-  const result = await userDb.deleteUser(username)
-  if (result['count'] == 1) {
-      return "User deleted successfully."
-  }
-  else {
-      throw new customErrs.QueryError(`Failed in deleting user with username: "${username}".`)
+  const result = await userDb.deleteUser(username);
+  if (result["rowsAffected"] == 1) {
+    return "User deleted successfully.";
+  } else {
+    throw new customErrs.QueryError(
+      `Failed in deleting user with username: "${username}".`
+    );
   }
 }
 
@@ -138,5 +148,5 @@ module.exports = {
   registerUser,
   getUser,
   updatePassword,
-  removeUser
+  removeUser,
 };

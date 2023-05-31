@@ -4,9 +4,10 @@ const express = require('express');
 const app = express()
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const verifyJWT = require("./middleware/verifyJWT")
 const customErrors = require("./middleware/errorHandling")
 
-const port = process.env.PORT || 3005;
+const port = 3005;
 
 // Express configuration
 
@@ -30,32 +31,3 @@ app.use(customErrors)
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const business_regex = new RegExp(
-//   "https://capitalplusbrokers.com/business/[^/]+/$"
-// );

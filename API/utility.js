@@ -1,22 +1,24 @@
-// const mysql = require("mysql2");
-const odbc = require('odbc');
-const connectionString = "Driver={ODBC Driver 18 for SQL Server};Server=tcp:property-viewing-server.database.windows.net,1433;Database=propertyViewingDb;Uid=adminV;Pwd=V34024445v;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;";
-
+const mysql = require("mysql2");
 const dotenv = require("dotenv");
 dotenv.config();
 
 // Establishing database connection
-async function mysqlPool(sql) {
-  const connection = await odbc.connect(connectionString);
-  console.log(sql);
-  try {
-    const result = await connection.query(sql);
-    return result;
-  } catch (err) {
-    throw err;
-  } finally {
-    connection.close();
-  }
+function mysqlPool() {
+  const sql = require("mssql");
+
+  const config = {
+    server: "property-viewing-server.database.windows.net",
+    user: "adminV",
+    password: "V34024445v",
+    database: "propertyViewingDb",
+    options: {
+      encrypt: true, // Enable encryption
+      trustServerCertificate: true, // Trust the server's SSL certificate
+    },
+  };
+  const pool = new sql.ConnectionPool(config)
+  
+  return pool.connect();
 }
 
 // Default request handler to prevent the application from crashing
@@ -33,7 +35,6 @@ async function executeRequest(func, req, source) {
 
   return { result: response };
 }
-
 
 module.exports = {
   executeRequest,
