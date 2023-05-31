@@ -19,7 +19,7 @@ function LogIn() {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        axios.post("https://capitalplusbrokers.com/api/auth/login", {
+        axios.post("https://property-viewing-api.azurewebsites.net/api/auth/login", {
             username: getUsername.current.value,
             password: getPassword.current.value,
         },{
