@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const customErrors = require("./middleware/errorHandling")
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3005;
 
 // Express configuration
 
